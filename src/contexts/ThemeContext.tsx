@@ -49,6 +49,9 @@ const translations = {
     'highlights.lisbon.description': 'Projeto de automação apresentado no ExpoJud Portugal agiliza processos de guarda de menores venezuelanos, reduz custos e libera servidores para atividades mais complexas.',
     'highlights.awards.title': 'Premiações TJRR',
     'highlights.awards.description': 'Reconhecimento por excelência técnica e inovação em projetos desenvolvidos para o Tribunal de Justiça de Roraima.',
+
+    // Projects
+    'projects.title': 'Projetos em Destaque',
     
     // Experience Section
     'experience.title': 'Experiência Profissional',
@@ -164,6 +167,9 @@ const translations = {
     'highlights.awards.title': 'TJRR Awards',
     'highlights.awards.description': 'Recognition for technical excellence and innovation in projects developed for the Court of Justice of Roraima.',
     
+    // Projects
+    'projects.title': 'Featured Projects',
+
     // Experience Section
     'experience.title': 'Professional Experience',
     'experience.mid.achievements' : 'Main achievements',
