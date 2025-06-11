@@ -1,8 +1,10 @@
 
 import React from 'react';
 import { ExternalLink, Github } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Projects = () => {
+  const { t } = useTheme();
   const projects = [
     {
       title: 'Sistema de E-commerce',
@@ -34,7 +36,7 @@ const Projects = () => {
     <section id="projetos" className="py-16 px-6 bg-white">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-4xl font-bold text-center text-slate-800 mb-12">
-          Projetos em Destaque
+          {t('projects.title')}
         </h2>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

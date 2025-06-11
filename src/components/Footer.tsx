@@ -16,21 +16,24 @@ const Footer = () => {
           
           <div className="flex justify-center space-x-6 mb-8">
             <a
-              href="#"
+              href="https://github.com/antonino3g"
+              target="_blank"
               className="text-slate-400 hover:text-white transition-colors duration-200"
               aria-label="GitHub"
             >
               <Github size={24} />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/antoninopraxedes/"
+              target="_blank"
               className="text-slate-400 hover:text-white transition-colors duration-200"
               aria-label="LinkedIn"
             >
               <Linkedin size={24} />
             </a>
             <a
-              href="#"
+              href="mailto:antonino.praxedes@gmail.com"
+              target="_blank"
               className="text-slate-400 hover:text-white transition-colors duration-200"
               aria-label="Email"
             >
