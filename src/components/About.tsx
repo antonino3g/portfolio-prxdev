@@ -1,11 +1,14 @@
+import { useTheme } from '@/contexts/ThemeContext';
 import { Code, Coffee, Lightbulb } from 'lucide-react';
 
+
 const About = () => {
+  const { t } = useTheme();
   return (
     <section id="" className="py-16 px-6 bg-white">
       <div className="container mx-auto max-w-4xl">
         <h2 className="text-4xl font-bold text-center text-slate-800 mb-12">
-          Sobre
+          {t('hero.about')}
         </h2>
         
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -32,24 +35,24 @@ const About = () => {
                 <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Code className="text-blue-600" size={24} />
                 </div>
-                <h3 className="font-semibold text-slate-800">Clean Code</h3>
-                <p className="text-sm text-slate-600">Código limpo e manutenível</p>
+                <h3 className="font-semibold text-slate-800">{t('hero.featurecc')}</h3>
+                <p className="text-sm text-slate-600">{t('hero.featurecc.ph')}</p>
               </div>
               
               <div className="text-center">
                 <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Lightbulb className="text-blue-600" size={24} />
                 </div>
-                <h3 className="font-semibold text-slate-800">Inovação</h3>
-                <p className="text-sm text-slate-600">Soluções criativas</p>
+                <h3 className="font-semibold text-slate-800">{t('hero.featureino')}</h3>
+                <p className="text-sm text-slate-600">{t('hero.featureino.ph')}</p>
               </div>
               
               <div className="text-center">
                 <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Coffee className="text-blue-600" size={24} />
                 </div>
-                <h3 className="font-semibold text-slate-800">Dedicação</h3>
-                <p className="text-sm text-slate-600">Comprometimento total</p>
+                <h3 className="font-semibold text-slate-800">{t('hero.featureded')}</h3>
+                <p className="text-sm text-slate-600">{t('hero.featureded.ph')}</p>
               </div>
             </div>
           </div>

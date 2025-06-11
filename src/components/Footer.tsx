@@ -1,15 +1,17 @@
 
 import React from 'react';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Footer = () => {
+  const { t } = useTheme();
   return (
     <footer className="bg-slate-800 text-white py-12 px-6">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <div className="mb-6">
-            <h3 className="text-2xl font-bold mb-2">João Silva</h3>
-            <p className="text-slate-400">Desenvolvedor Java Full Stack</p>
+            <h3 className="text-2xl font-bold mb-2">Antonino Junior</h3>
+            <p className="text-slate-400">{t('footer.stack')}</p>
           </div>
           
           <div className="flex justify-center space-x-6 mb-8">
@@ -38,7 +40,7 @@ const Footer = () => {
           
           <div className="border-t border-slate-700 pt-6">
             <p className="text-slate-400 text-sm flex items-center justify-center gap-2">
-              Feito com <Heart size={16} className="text-red-500" /> por João Silva © 2024
+              {t('footer.by')}
             </p>
           </div>
         </div>
