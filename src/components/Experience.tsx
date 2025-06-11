@@ -8,41 +8,57 @@ const Experience = () => {
 
   const experiences = [
     {
-      position: t('experience.senior.position'),
-      company: t('experience.senior.company'),
-      location: t('experience.senior.location'),
-      period: t('experience.senior.period'),
-      description: t('experience.senior.description'),
+      position: t('experience.mid.position'),
+      company: t('experience.mid.company'),
+      location: t('experience.mid.location'),
+      period: t('experience.mid.period'),
+      description: t('experience.mid.description'),
       achievements: [
-        'Reduziu tempo de build em 40% implementando CI/CD com Docker',
-        'Liderou equipe de 5 desenvolvedores em projeto crítico',
-        'Implementou testes automatizados aumentando cobertura para 90%'
+        t('experience.mid.achievements.1'),
+        t('experience.mid.achievements.2'),
       ]
     },
     {
-      position: 'Desenvolvedor Java Full Stack',
-      company: 'Inovação Digital',
-      location: 'Rio de Janeiro, RJ',
-      period: '2020 - 2022',
-      description: 'Desenvolvimento de aplicações web complexas utilizando Java 11+, Spring Boot, Angular e PostgreSQL. Participação ativa em code reviews e definição de arquitetura.',
+      position: t('experience.java.position'),
+      company: t('experience.java.company'),
+      location: t('experience.java.location'),
+      period: t('experience.java.period'),
+      description: t('experience.java.description'),
       achievements: [
-        'Desenvolveu API que processa 10k+ requisições por minuto',
-        'Otimizou queries SQL reduzindo tempo de resposta em 60%',
-        'Implementou sistema de cache com Redis'
+        t('experience.java.achievements.1'),
       ]
     },
     {
-      position: 'Desenvolvedor Java Júnior',
-      company: 'StartupTech',
-      location: 'Belo Horizonte, MG',
-      period: '2019 - 2020',
-      description: 'Desenvolvimento de funcionalidades backend em Java com Spring Framework e frontend com Angular. Aprendizado contínuo de boas práticas e padrões de desenvolvimento.',
+      position: t('experience.sondaManager.position'),
+      company: t('experience.sondaManager.company'),
+      location: t('experience.sondaManager.location'),
+      period: t('experience.sondaManager.period'),
+      description: t('experience.sondaManager.description'),
       achievements: [
-        'Desenvolveu 15+ APIs RESTful',
-        'Participou de refatoração de sistema legado',
-        'Contribuiu com documentação técnica'
+        t('experience.sondaManager.achievements.1'),
+        t('experience.sondaManager.achievements.2'),
       ]
-    }
+    },
+    {
+      position: t('experience.sondaDev.position'),
+      company: t('experience.sondaDev.company'),
+      location: t('experience.sondaDev.location'),
+      period: t('experience.sondaDev.period'),
+      description: t('experience.sondaDev.description'),
+      achievements: [
+        t('experience.sondaDev.achievements.1'),
+      ]
+    },
+    {
+      position: t('experience.flutterPr.position'),
+      company: t('experience.flutterPr.company'),
+      location: t('experience.flutterPr.location'),
+      period: t('experience.flutterPr.period'),
+      description: t('experience.flutterPr.description'),
+      achievements: [
+        t('experience.flutterPr.achievements.1'),
+      ]
+    },
   ];
 
   return (
@@ -90,7 +106,7 @@ const Experience = () => {
                   </p>
                   
                   <div>
-                    <h5 className="font-semibold text-slate-800 mb-2">Principais conquistas:</h5>
+                    <h5 className="font-semibold text-slate-800 mb-2"> {t('experience.mid.achievements')}</h5>
                     <ul className="list-disc list-inside text-slate-600 space-y-1">
                       {exp.achievements.map((achievement, achievementIndex) => (
                         <li key={achievementIndex} className="text-sm">

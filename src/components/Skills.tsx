@@ -1,7 +1,7 @@
-
-import React from 'react';
+import { useTheme } from "@/contexts/ThemeContext";
 
 const Skills = () => {
+  const { t } = useTheme();
   const skillCategories = [
     {
       title: 'Backend',
@@ -16,8 +16,8 @@ const Skills = () => {
     {
       title: 'Frontend',
       skills: [
-        { name: 'Angular', level: 92 },
-        { name: 'ReactJS', level: 88 },
+        { name: 'Angular', level: 91 },
+        { name: 'ReactJS', level: 89 },
         { name: 'TypeScript', level: 85 },
         { name: 'Angular Material', level: 90 },
         { name: 'HTML/CSS', level: 95 }
@@ -39,7 +39,7 @@ const Skills = () => {
     <section id="habilidades" className="py-16 px-6 bg-slate-50">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-4xl font-bold text-center text-slate-800 mb-12">
-          Habilidades Técnicas
+          {t('skills.title')}
         </h2>
         
         <div className="grid md:grid-cols-3 gap-8">

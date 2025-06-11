@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Contact = () => {
+  const { t } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,20 +38,18 @@ const Contact = () => {
     <section id="contato" className="py-16 px-6 bg-white">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-4xl font-bold text-center text-slate-800 mb-12">
-          Entre em Contato
+          {t('contact')}
         </h2>
         
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div>
             <h3 className="text-2xl font-bold text-slate-800 mb-6">
-              Vamos conversar!
+              {t('contact.h3')}
             </h3>
             
             <p className="text-slate-600 mb-8 leading-relaxed">
-              Estou sempre interessado em novos projetos e oportunidades. 
-              Se você tem uma ideia ou precisa de ajuda com desenvolvimento, 
-              não hesite em entrar em contato!
+              {t('contact.p')}
             </p>
             
             <div className="space-y-4">
@@ -58,8 +58,8 @@ const Contact = () => {
                   <Mail className="text-blue-600" size={20} />
                 </div>
                 <div>
-                  <p className="text-slate-800 font-medium">Email</p>
-                  <p className="text-slate-600">joao.silva@email.com</p>
+                  <p className="text-slate-800 font-medium">{t('contact.email')}</p>
+                  <p className="text-slate-600">{t('contact.email.ph')}</p>
                 </div>
               </div>
               
@@ -68,8 +68,8 @@ const Contact = () => {
                   <Phone className="text-blue-600" size={20} />
                 </div>
                 <div>
-                  <p className="text-slate-800 font-medium">Telefone</p>
-                  <p className="text-slate-600">+55 (11) 99999-9999</p>
+                  <p className="text-slate-800 font-medium">Business WhatsApp</p>
+                  <p className="text-slate-600">+55 (48) 9 9994-4587</p>
                 </div>
               </div>
               
@@ -78,8 +78,8 @@ const Contact = () => {
                   <MapPin className="text-blue-600" size={20} />
                 </div>
                 <div>
-                  <p className="text-slate-800 font-medium">Localização</p>
-                  <p className="text-slate-600">São Paulo, Brasil</p>
+                  <p className="text-slate-800 font-medium">{t('contact.location')}</p>
+                  <p className="text-slate-600">Florianópolis, Brasil</p>
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@ const Contact = () => {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-slate-700 font-medium mb-2">
-                    Nome
+                  {t('contact.sendMensseger.name')}
                   </label>
                   <input
                     type="text"
@@ -101,13 +101,13 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
-                    placeholder="Seu nome"
+                    placeholder= {t('contact.sendMensseger.name.ph')}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="email" className="block text-slate-700 font-medium mb-2">
-                    Email
+                  {t('contact.email')}
                   </label>
                   <input
                     type="email"
@@ -117,14 +117,14 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
-                    placeholder="seu@email.com"
+                    placeholder={t('contact.sendMensseger.email.ph')}
                   />
                 </div>
               </div>
               
               <div>
                 <label htmlFor="subject" className="block text-slate-700 font-medium mb-2">
-                  Assunto
+                {t('contact.sendMensseger.subject')}
                 </label>
                 <input
                   type="text"
@@ -134,13 +134,13 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
-                  placeholder="Assunto da mensagem"
+                  placeholder={t('contact.sendMensseger.email.ph')}
                 />
               </div>
               
               <div>
                 <label htmlFor="message" className="block text-slate-700 font-medium mb-2">
-                  Mensagem
+                {t('contact.sendMensseger.mensseger')}
                 </label>
                 <textarea
                   id="message"
@@ -150,7 +150,7 @@ const Contact = () => {
                   required
                   rows={5}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 resize-none"
-                  placeholder="Sua mensagem..."
+                  placeholder={t('contact.sendMensseger.mensseger.ph')}
                 ></textarea>
               </div>
               
@@ -159,7 +159,7 @@ const Contact = () => {
                 className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200 flex items-center justify-center gap-2 hover:scale-105"
               >
                 <Send size={20} />
-                Enviar Mensagem
+                {t('contact.sendMensseger.btn')}
               </button>
             </form>
           </div>
