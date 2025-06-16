@@ -13,7 +13,7 @@ const Header = () => {
     { href: '#sobre', label: t('nav.about') },
     { href: '#habilidades', label: t('nav.skills') },
     { href: '#destaques', label: t('nav.highlights') },
-    { href: '#projetos', label: t('nav.projects') },
+    // { href: '#projetos', label: t('nav.projects') },
     { href: '#experiencia', label: t('nav.experience') },
     { href: '#contato', label: t('nav.contact') }
   ];

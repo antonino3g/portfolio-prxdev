@@ -67,10 +67,17 @@ const Contact = () => {
                 <div className="bg-blue-100 p-3 rounded-lg">
                   <Phone className="text-blue-600" size={20} />
                 </div>
-                <div>
-                  <p className="text-slate-800 font-medium">Business WhatsApp</p>
-                  <p className="text-slate-600">+55 (48) 9 9994-4587</p>
-                </div>
+              <div>
+                <p className="text-slate-800 font-medium">Business WhatsApp</p>
+                <a
+                  href="https://wa.me/5548999944587"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                >
+                  +55 (48) 9 9994-4587
+                </a>
+              </div>
               </div>
               
               <div className="flex items-center gap-4">
