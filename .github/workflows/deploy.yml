@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Vite React to GitHub Pages
 
 on:
   push:
@@ -6,14 +6,14 @@ on:
       - main
 
 permissions:
-  contents: write 
+  contents: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📦 Checkout repository
+      - name: 📦 Checkout code
         uses: actions/checkout@v4
 
       - name: 🔧 Setup Node.js
