@@ -46,12 +46,12 @@ const Hero = () => {
               <Download size={20} />
               {t('hero.download-cv')}
             </button>
-            <button 
+            {/* <button 
               onClick={handleViewProjects}
               className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all duration-200"
             >
               {t('hero.view-projects')}
-            </button>
+            </button> */}
           </div>
           
           <div className="flex justify-center space-x-6">

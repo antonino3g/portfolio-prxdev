@@ -10,7 +10,7 @@ const Skills = () => {
         { name: 'Spring Boot', level: 90 },
         { name: 'JPA/Hibernate', level: 94 },
         { name: 'Maven/Gradle', level: 91 },
-        { name: 'Node.js', level: 85 },
+        { name: 'Node.js', level: 89 },
       ]
     },
     {
@@ -28,9 +28,9 @@ const Skills = () => {
       skills: [
         { name: 'PostgreSQL', level: 93 },
         { name: 'MySQL', level: 89 },
-        { name: 'Docker', level: 83 },
-        { name: 'IntelliJ IDEA', level: 93 },
-        { name: 'Git', level: 95 }
+        { name: 'Docker', level: 88 },
+        { name: 'AWS EC2', level: 91 },
+        { name: 'Git', level: 97 }
       ]
     },
   ];

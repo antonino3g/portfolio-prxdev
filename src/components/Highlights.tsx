@@ -60,7 +60,7 @@ const Highlights = () => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors duration-200 font-medium"
                     >
-                      Ver matéria
+                      {t('highlights.view article')}
                       <ExternalLink size={16} />
                     </a>
                   </div>

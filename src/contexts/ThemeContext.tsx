@@ -38,6 +38,11 @@ const translations = {
     'hero.featureded': 'Dedicação',
     'hero.featureded.ph': 'Comprometimento total',
 
+    // About
+    'about.text.p1': "Sou desenvolvedor Java Full Stack com mais de quatro anos de experiência no backend (Java, Spring Boot) e no frontend (Angular, ReactJS). Atuei em projetos com arquitetura de microserviços, Web Services e APIs RESTful, utilizando bancos de dados relacionais, AWS EC2 e práticas DevOps como Docker e CI/CD. Também possuo experiência em desenvolvimento mobile com publicação de aplicativos na Google Play Store. Aplico padrões de projeto como MVC, DDD, SOLID e Clean Code.",
+    'about.text.p2': "Entusiasta de GNU/Linux e escritor nas horas vagas, mantinha um ",
+    'about.text.p3': "desde 2015 que alcançou mais de 56k acessos, onde compartilhava artigos e anotações com a comunidade.",
+
     // Skills
     'skills.title' : "Habilidades Técnicas",
     
@@ -49,6 +54,7 @@ const translations = {
     'highlights.lisbon.description': 'Projeto de automação apresentado no ExpoJud Portugal agiliza processos de guarda de menores venezuelanos, reduz custos e libera servidores para atividades mais complexas.',
     'highlights.awards.title': 'Premiações TJRR',
     'highlights.awards.description': 'Reconhecimento por excelência técnica e inovação em projetos desenvolvidos para o Tribunal de Justiça de Roraima.',
+    'highlights.view article':'Ver matéria',
 
     // Projects
     'projects.title': 'Projetos em Destaque',
@@ -65,7 +71,7 @@ const translations = {
     'experience.mid.description': 'Experiência com desenvolvimento backend em Java EE, MySQL e Hibernate, criação de Web Services e APIs REST, além de relatórios com JasperReports e aplicações desktop em Java Swing. Atuação no frontend com Angular 7+ e na manutenção do app Portal Postal Coletas em Flutter 3.16+, com publicação na Play Store, ajustes de compatibilidade e geração de builds.',
 
     'experience.mid.achievements.1':'Integração da API Coletas dos Correios como nova funcionalidade Portal Postal (Java/Angular)',
-    'experience.mid.achievements.2':'Reativação do app Coletas na Play Store com ajustes em Flutter e documentação técnica para devs.',
+    'experience.mid.achievements.2':'Publicação do app Coletas na Play Store Google, feito em Flutter e documentação técnica para devs.',
 
     // ToolsData
     'experience.java.position': 'Desenvolvedor Backend Java',
@@ -107,7 +113,7 @@ const translations = {
     'contact.h3':'Vamos conversar!',
     'contact.p':'Estou sempre interessado em novos projetos e oportunidades. Se você tem uma ideia ou precisa de ajuda com desenvolvimento, não hesite em entrar em contato!',
     "contact.email":"E-mail",
-    "contact.email.ph":"anderson.silva@email.com",
+    "contact.email.ph":"antonino.praxedes@gmail.com",
     "contact.location":"Localização",
     "contact.sendMensseger.name":"Nome",
     "contact.sendMensseger.name.ph":"Seu nome",
@@ -154,6 +160,10 @@ const translations = {
     'hero.featureded': 'Dedication',
     'hero.featureded.ph': 'Total commitment',
 
+    // About
+    'about.text.p1': "I’m a Full Stack Java Developer with over four years of experience in backend development (Java, Spring Boot) and frontend development (Angular, ReactJS). I’ve worked on projects with microservices architecture, Web Services, and RESTful APIs, using relational databases, AWS EC2, and DevOps practices such as Docker and CI/CD. I also have experience in mobile development, including publishing apps on the Google Play Store. I follow software design principles like MVC, DDD, SOLID, and Clean Code.",
+    'about.text.p2': "A GNU/Linux enthusiast and writer in my spare time, I maintained a ",
+    'about.text.p3': "since 2015 that reached over 56k views, where I shared technical articles and notes with the community.",
 
     // Skills
     'skills.title' : "Technical Skills",
@@ -166,6 +176,7 @@ const translations = {
     'highlights.lisbon.description': 'Participation in an innovative project that was implemented in Lisbon, Portugal, focusing on enterprise solutions.',
     'highlights.awards.title': 'TJRR Awards',
     'highlights.awards.description': 'Recognition for technical excellence and innovation in projects developed for the Court of Justice of Roraima.',
+    'highlights.view article':'View article',
     
     // Projects
     'projects.title': 'Featured Projects',
@@ -181,7 +192,7 @@ const translations = {
     'experience.mid.period': 'Feb/2025 - Present',
     'experience.mid.description': 'Experience in backend development using Java EE, MySQL, and Hibernate, including the creation of Web Services and REST APIs, report generation with JasperReports, and desktop applications with Java Swing. Frontend work with Angular 7+ and maintenance of the App Coletas (Portal Postal) in Flutter 3.16+, including Play Store publication, compatibility adjustments, and build generation.',
     'experience.mid.achievements.1':'Integration of the Post Office Collections API as a new Postal Portal feature (Java/Angular).',
-    'experience.mid.achievements.2':'Reactivated App Coletas on Play Store with Flutter fixes and developer documentation.',
+    'experience.mid.achievements.2': 'Publication of the Coletas app on the Google Play Store, developed in Flutter, along with technical documentation for developers.',
 
     // ToolsData
     'experience.java.position': 'Java Backend Developer',
@@ -221,7 +232,7 @@ const translations = {
     "contact.h3": "Let's talk!",
     "contact.p": "I'm always interested in new projects and opportunities. If you have an idea or need help with development, don't hesitate to reach out!",
     "contact.email": "Email",
-    "contact.email.ph": "anderson.silva@email.com",
+    "contact.email.ph": "antonino.praxedes@gmail.com",
     "contact.location": "Location",
     "contact.sendMensseger.name": "Name",
     "contact.sendMensseger.name.ph": "Your name",

@@ -1,8 +1,6 @@
-
-import React from 'react';
-import { Globe } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Button } from './ui/button';
+import ReactCountryFlag from 'react-country-flag';
 
 const ThemeSwitch = () => {
   const { language, toggleLanguage } = useTheme();
@@ -16,7 +14,15 @@ const ThemeSwitch = () => {
         onClick={toggleLanguage}
         className="flex items-center gap-2"
       >
-        <Globe size={16} />
+        <ReactCountryFlag 
+          countryCode={language === 'pt-br' ? 'BR' : 'US'} 
+          svg 
+          style={{
+            width: '16px',
+            height: '16px',
+          }}
+          title={language === 'pt-br' ? 'Brasil' : 'United States'}
+        />
         <span className="text-xs">
           {language === 'pt-br' ? 'PT' : 'EN'}
         </span>
