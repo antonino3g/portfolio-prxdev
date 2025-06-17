@@ -7,8 +7,7 @@ const Hero = () => {
   const { t } = useTheme();
 
   const handleDownloadCV = () => {
-    // Substitua este link pelo seu link real do Google Drive
-    const cvUrl = 'https://drive.google.com/file/d/SEU_ID_DO_ARQUIVO/view?usp=sharing';
+    const cvUrl = 'https://drive.google.com/file/d/1_Q_ph6kmy6mE2AXh5Za5imXArpXN1gRf/view?usp=sharing';
     window.open(cvUrl, '_blank');
   };
 
