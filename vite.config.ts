@@ -4,8 +4,10 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-base: '/portfolio-prxdev/',
-build: { outDir: 'dist' },
+  base: '/portfolio-prxdev/',
+  build: {
+    outDir: 'docs',
+  },
   server: {
     host: "::",
     port: 8080,
