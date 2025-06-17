@@ -68,7 +68,7 @@ const translations = {
     'experience.mid.company': 'SCC4',
     'experience.mid.location': 'Florianópolis - SC',
     'experience.mid.period': 'Fev/2025 - Presente',
-    'experience.mid.description': 'Experiência com desenvolvimento backend em Java EE, MySQL e Hibernate, criação de Web Services e APIs REST, além de relatórios com JasperReports e aplicações desktop em Java Swing. Atuação no frontend com Angular 7+ e na manutenção do app Portal Postal Coletas em Flutter 3.16+, com publicação na Play Store, ajustes de compatibilidade e geração de builds.',
+    'experience.mid.description': 'Experiência com desenvolvimento backend em Java EE, MySQL e Hibernate, criação de Web Services e APIs REST, além de relatórios com JasperReports e aplicações desktop em Java Swing. Atuação no frontend com Angular e na manutenção do app Portal Postal Coletas em Flutter 3.16+, com publicação na Play Store, ajustes de compatibilidade e geração de builds.',
 
     'experience.mid.achievements.1':'Integração da API Coletas dos Correios como nova funcionalidade Portal Postal (Java/Angular)',
     'experience.mid.achievements.2':'Publicação do app Coletas na Play Store Google, feito em Flutter e documentação técnica para devs.',
@@ -190,7 +190,7 @@ const translations = {
     'experience.mid.company': 'SCC4',
     'experience.mid.location': 'Florianópolis - SC',
     'experience.mid.period': 'Feb/2025 - Present',
-    'experience.mid.description': 'Experience in backend development using Java EE, MySQL, and Hibernate, including the creation of Web Services and REST APIs, report generation with JasperReports, and desktop applications with Java Swing. Frontend work with Angular 7+ and maintenance of the App Coletas (Portal Postal) in Flutter 3.16+, including Play Store publication, compatibility adjustments, and build generation.',
+    'experience.mid.description': 'Experience in backend development using Java EE, MySQL, and Hibernate, including the creation of Web Services and REST APIs, report generation with JasperReports, and desktop applications with Java Swing. Frontend work with Angular and maintenance of the App Coletas (Portal Postal) in Flutter 3.16+, including Play Store publication, compatibility adjustments, and build generation.',
     'experience.mid.achievements.1':'Integration of the Post Office Collections API as a new Postal Portal feature (Java/Angular).',
     'experience.mid.achievements.2': 'Publication of the Coletas app on the Google Play Store, developed in Flutter, along with technical documentation for developers.',
 
