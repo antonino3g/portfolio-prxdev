@@ -1,5 +1,3 @@
-
-import React from 'react';
 import { Github, Linkedin, Mail, Download } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
