@@ -5,7 +5,7 @@ const Hero = () => {
   const { t } = useTheme();
 
   const handleDownloadCV = () => {
-    const cvUrl = 'https://drive.google.com/file/d/1yCovWWB3l487WFvswEmyQJIa0usdQ-ZU/view?usp=sharing';
+    const cvUrl = 'https://drive.google.com/file/d/1Jx45cSlAaMVI7iD_aibIamIeS_y2rPwu/view?usp=sharing';
     window.open(cvUrl, '_blank');
   };
 
