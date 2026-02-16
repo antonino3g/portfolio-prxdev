@@ -13,8 +13,9 @@ const Header = () => {
     { href: 'sobre', label: t('nav.about') },
     { href: 'habilidades', label: t('nav.skills') },
     { href: 'destaques', label: t('nav.highlights') },
-    // { href: 'projetos', label: t('nav.projects') },
     { href: 'experiencia', label: t('nav.experience') },
+    { href: 'formacao', label: t('nav.education') },
+    { href: 'certificacoes', label: t('nav.certifications') },
     { href: 'contato', label: t('nav.contact') }
   ];
 

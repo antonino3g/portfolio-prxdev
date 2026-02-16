@@ -9,27 +9,28 @@ const Skills = () => {
         { name: 'Java', level: 95 },
         { name: 'Spring Boot', level: 90 },
         { name: 'JPA/Hibernate', level: 94 },
-        { name: 'Maven/Gradle', level: 91 },
-        { name: 'Node.js', level: 89 },
+        { name: 'Node.js/Express', level: 89 },
+        { name: 'Python', level: 85 },
       ]
     },
     {
       title: 'Frontend',
       skills: [
         { name: 'Angular', level: 91 },
-        { name: 'ReactJS', level: 89 },
+        { name: 'React/Next.js', level: 89 },
         { name: 'TypeScript', level: 85 },
         { name: 'Angular Material', level: 90 },
         { name: 'HTML/CSS', level: 95 }
       ]
     },
     {
-      title: 'Database & Tools',
+      title: 'Database & DevOps',
       skills: [
         { name: 'PostgreSQL', level: 93 },
         { name: 'MySQL', level: 89 },
-        { name: 'Docker', level: 88 },
-        { name: 'AWS EC2', level: 91 },
+        { name: 'Redis', level: 88 },
+        { name: 'AWS (EC2, Lambda, RDS)', level: 91 },
+        { name: 'Docker/Nginx', level: 88 },
         { name: 'Git', level: 97 }
       ]
     },
@@ -41,14 +42,14 @@ const Skills = () => {
         <h2 className="text-4xl font-bold text-center text-slate-800 mb-12">
           {t('skills.title')}
         </h2>
-        
+
         <div className="grid md:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
             <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
               <h3 className="text-xl font-bold text-slate-800 mb-6 text-center">
                 {category.title}
               </h3>
-              
+
               <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex}>

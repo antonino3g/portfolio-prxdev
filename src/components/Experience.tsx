@@ -8,6 +8,19 @@ const Experience = () => {
 
   const experiences = [
     {
+      position: t('experience.gloss.position'),
+      company: t('experience.gloss.company'),
+      location: t('experience.gloss.location'),
+      period: t('experience.gloss.period'),
+      description: t('experience.gloss.description'),
+      achievements: [
+        t('experience.gloss.achievements.1'),
+        t('experience.gloss.achievements.2'),
+        t('experience.gloss.achievements.3'),
+        t('experience.gloss.achievements.4'),
+      ]
+    },
+    {
       position: t('experience.mid.position'),
       company: t('experience.mid.company'),
       location: t('experience.mid.location'),
@@ -16,6 +29,7 @@ const Experience = () => {
       achievements: [
         t('experience.mid.achievements.1'),
         t('experience.mid.achievements.2'),
+        t('experience.mid.achievements.3'),
       ]
     },
     {
@@ -26,6 +40,7 @@ const Experience = () => {
       description: t('experience.java.description'),
       achievements: [
         t('experience.java.achievements.1'),
+        t('experience.java.achievements.2'),
       ]
     },
     {
@@ -37,6 +52,7 @@ const Experience = () => {
       achievements: [
         t('experience.sondaManager.achievements.1'),
         t('experience.sondaManager.achievements.2'),
+        t('experience.sondaManager.achievements.3'),
       ]
     },
     {
@@ -47,6 +63,8 @@ const Experience = () => {
       description: t('experience.sondaDev.description'),
       achievements: [
         t('experience.sondaDev.achievements.1'),
+        t('experience.sondaDev.achievements.2'),
+        t('experience.sondaDev.achievements.3'),
       ]
     },
     {
@@ -67,17 +85,17 @@ const Experience = () => {
         <h2 className="text-4xl font-bold text-center text-slate-800 mb-12">
           {t('experience.title')}
         </h2>
-        
+
         <div className="relative">
           {/* Timeline line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-200"></div>
-          
+
           <div className="space-y-12">
             {experiences.map((exp, index) => (
               <div key={index} className="relative flex items-start">
                 {/* Timeline dot */}
                 <div className="absolute left-6 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow"></div>
-                
+
                 <div className="ml-16 bg-white p-6 rounded-lg shadow-lg w-full">
                   <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                     <div>
@@ -88,7 +106,7 @@ const Experience = () => {
                         {exp.company}
                       </h4>
                     </div>
-                    
+
                     <div className="flex flex-col md:text-right text-sm text-slate-500">
                       <div className="flex items-center gap-1 mb-1">
                         <Calendar size={14} />
@@ -100,13 +118,13 @@ const Experience = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <p className="text-slate-600 mb-4 leading-relaxed">
                     {exp.description}
                   </p>
-                  
+
                   <div>
-                    <h5 className="font-semibold text-slate-800 mb-2"> {t('experience.mid.achievements')}</h5>
+                    <h5 className="font-semibold text-slate-800 mb-2">{t('experience.achievements')}</h5>
                     <ul className="list-disc list-inside text-slate-600 space-y-1">
                       {exp.achievements.map((achievement, achievementIndex) => (
                         <li key={achievementIndex} className="text-sm">

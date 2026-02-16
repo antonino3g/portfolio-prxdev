@@ -11,7 +11,7 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-const translations = {
+const translations: Record<Language, Record<string, string>> = {
   'pt-br': {
     // Navigation
     'nav.home': 'Início',
@@ -20,17 +20,19 @@ const translations = {
     'nav.highlights': 'Destaques',
     'nav.projects': 'Projetos',
     'nav.experience': 'Experiência',
+    'nav.education': 'Formação',
+    'nav.certifications': 'Certificações',
     'nav.contact': 'Contato',
-    
+
     // Hero Section
-    'hero.about' : "Sobre",
+    'hero.about': 'Sobre',
     'hero.greeting': 'Olá, eu sou',
     'hero.name': 'Antonino Junior',
-    'hero.title': 'Desenvolvedor Java Full Stack com experiência em JSP, Angular e ReactJS, utilizando Java EE / Jakarta EE, Spring Boot e arquiteturas modernas de software.',
-    'hero.download-cv': 'Download CV',
+    'hero.title': 'Engenheiro de Software Sênior | Java & Angular | Node.js & ReactJS | MySQL | PostgreSQL | AWS',
+    'hero.download-cv': 'Download Currículo',
+    'hero.cv-url': 'https://drive.google.com/file/d/1nJzFFshKdCzdMMgo02WvezSMMLx20EOf/view?usp=sharing',
     'hero.view-projects': 'Ver Projetos',
 
-  
     'hero.featurecc': 'Clean Code',
     'hero.featurecc.ph': 'Código limpo e manutenível',
     'hero.featureino': 'Inovação',
@@ -39,97 +41,133 @@ const translations = {
     'hero.featureded.ph': 'Comprometimento total',
 
     // About
-    'about.text.p1': "Sou desenvolvedor Java Full Stack com mais de quatro anos de experiência no backend (Java, Spring Boot) e no frontend (Angular, ReactJS). Atuei em projetos com arquitetura de microserviços, Web Services e APIs RESTful, utilizando bancos de dados relacionais, AWS EC2 e práticas DevOps como Docker e CI/CD. Também possuo experiência em desenvolvimento mobile com publicação de aplicativos na Google Play Store. Aplico padrões de projeto como MVC, DDD, SOLID e Clean Code.",
-    'about.text.p2': "Entusiasta de GNU/Linux e escritor nas horas vagas, mantinha um ",
-    'about.text.p3': "desde 2015 que alcançou mais de 56k acessos, onde compartilhava artigos e anotações com a comunidade.",
+    'about.text.p1': 'Engenheiro de Software com mais de 6 anos de experiência em desenvolvimento Full Stack, com foco na construção de sistemas escaláveis e de alta disponibilidade. Atuo com Java (Spring Boot, Jakarta EE, Hibernate), Angular, Node.js/Express e React/Next.js, com experiência sólida em PostgreSQL, MySQL, Redis, automação com Python e infraestrutura AWS (EC2, Lambda, RDS, Amplify).',
+    'about.text.p2': 'Entusiasta de GNU/Linux e escritor nas horas vagas, mantinha um ',
+    'about.text.p3': 'desde 2015 que alcançou mais de 56k acessos, onde compartilhava artigos e anotações com a comunidade.',
 
     // Skills
-    'skills.title' : "Habilidades Técnicas",
-    
+    'skills.title': 'Habilidades Técnicas',
+
     // Highlights Section
     'highlights.title': 'Destaques',
+    'highlights.metrics.years': 'Anos de Experiência',
+    'highlights.metrics.transactions': 'Processados em Transações',
+    'highlights.metrics.salons': 'Salões Conectados',
+    'highlights.metrics.clients': 'Clientes Gerenciados',
     'highlights.teaching.title': 'Professor de Programação',
     'highlights.teaching.description': 'Atuação na criação de núcleos de automação e capacitação de mais de 20 servidores do TJRR, promovendo a democratização do conhecimento em programação.',
     'highlights.lisbon.title': 'Projeto Internacional - Lisboa',
     'highlights.lisbon.description': 'Projeto de automação apresentado no ExpoJud Portugal agiliza processos de guarda de menores venezuelanos, reduz custos e libera servidores para atividades mais complexas.',
+    'highlights.podcast.title': 'Podcast - Lançamento de Produto',
+    'highlights.podcast.description': 'Participação no Podcast Gloss Express Brasil no lançamento da plataforma Mapa de Salões, conectando mais de 15.000 salões e profissionais do setor de beleza.',
     'highlights.awards.title': 'Premiações TJRR',
     'highlights.awards.description': 'Reconhecimento por excelência técnica e inovação em projetos desenvolvidos para o Tribunal de Justiça de Roraima.',
-    'highlights.view article':'Ver matéria',
+    'highlights.view article': 'Ver matéria',
 
     // Projects
     'projects.title': 'Projetos em Destaque',
-    
+
     // Experience Section
     'experience.title': 'Experiência Profissional',
-    'experience.mid.achievements' : 'Principais conquistas:',
+    'experience.achievements': 'Principais conquistas:',
+
+    // Gloss Express
+    'experience.gloss.position': 'Engenheiro de Software Sênior',
+    'experience.gloss.company': 'Gloss Express',
+    'experience.gloss.location': 'Florianópolis - SC',
+    'experience.gloss.period': 'Jul/2025 - Presente',
+    'experience.gloss.description': 'Atuação como Engenheiro de Software Sênior em equipe multidisciplinar no desenvolvimento Full Stack de soluções escaláveis para o setor de beleza, utilizando Node.js, PostgreSQL e Next.js/React. Participação ativa na arquitetura de sistemas de alta disponibilidade e na automação de processos de dados com Python.',
+    'experience.gloss.achievements.1': 'Plataforma Mapa de Salões: co-desenvolvimento da plataforma que conecta mais de 15.000 salões e profissionais em nível nacional e internacional.',
+    'experience.gloss.achievements.2': 'Checkout Proprietário: sistema de checkout otimizado para alta conversão, processando volume financeiro superior a R$ 10 milhões.',
+    'experience.gloss.achievements.3': 'SIG – Sistema Integrado Gloss Express: ecossistema de gestão centralizada para +28.000 clientes com módulos de CRM, Billing e RBAC.',
+    'experience.gloss.achievements.4': 'Automação de processos de ETL e pipelines de dados com Python (Selenium, Pandas).',
 
     // SCC4
     'experience.mid.position': 'Desenvolvedor Full Stack Java/Angular Pleno',
     'experience.mid.company': 'SCC4',
     'experience.mid.location': 'Florianópolis - SC',
-    'experience.mid.period': 'Fev/2025 - Presente',
-    'experience.mid.description': 'Experiência com desenvolvimento backend em Java EE, MySQL e Hibernate, criação de Web Services e APIs REST, além de relatórios com JasperReports e aplicações desktop em Java Swing. Atuação no frontend com Angular e na manutenção do app Portal Postal Coletas em Flutter 3.16+, com publicação na Play Store, ajustes de compatibilidade e geração de builds.',
-
-    'experience.mid.achievements.1':'Integração da API Coletas dos Correios como nova funcionalidade Portal Postal (Java/Angular)',
-    'experience.mid.achievements.2':'Publicação do app Coletas na Play Store Google, feito em Flutter e documentação técnica para devs.',
+    'experience.mid.period': 'Fev/2025 - Jul/2025',
+    'experience.mid.description': 'Desenvolvimento backend em Java EE, MySQL e Hibernate, com criação de Web Services e APIs REST para o ecossistema Portal Postal. Atuação no frontend com Angular e na manutenção do app Portal Postal Coletas em Flutter 3.16+, com publicação na Play Store.',
+    'experience.mid.achievements.1': 'Integração da API Coletas dos Correios como nova funcionalidade Portal Postal (Java/Angular).',
+    'experience.mid.achievements.2': 'Publicação do app Portal Postal Coletas em Flutter na Google Play Store, com documentação técnica para o time de devs.',
+    'experience.mid.achievements.3': 'Criação de relatórios gerenciais com JasperReports e desenvolvimento de aplicações desktop em Java Swing.',
 
     // ToolsData
     'experience.java.position': 'Desenvolvedor Backend Java',
     'experience.java.company': 'ToolsData',
     'experience.java.location': 'Florianópolis - SC',
     'experience.java.period': 'Nov/2024 - Mar/2025',
-    'experience.java.description': 'Experiência no desenvolvimento de APIs REST utilizando Java 17+, Jakarta EE e Hibernate, com integrações envolvendo RabbitMQ, Redis e OpenAPI. Atuação com testes automatizados utilizando JUnit, versionamento de código com Git e deploy de aplicações em servidores WildFly/JBoss.',
-    'experience.java.achievements' : 'Principais conquistas:',
-    'experience.java.achievements.1':'Integração com diversas APIs, desenvolvendo endpoints para um motor de crédito voltado ao apoio na tomada de decisões para concessão a clientes.',
+    'experience.java.description': 'Desenvolvimento de APIs REST utilizando Java 17+, Jakarta EE e Hibernate, com integrações envolvendo RabbitMQ, Redis e documentação via OpenAPI. Atuação com testes automatizados (JUnit) e deploy de aplicações em servidores WildFly/JBoss.',
+    'experience.java.achievements.1': 'Integração com diversas APIs externas, desenvolvendo endpoints para um motor de crédito voltado à tomada de decisões automatizadas para concessão a clientes.',
+    'experience.java.achievements.2': 'Implementação de testes automatizados com JUnit e gerenciamento de deploy em servidores WildFly/JBoss.',
 
     // Sonda Manager
     'experience.sondaManager.position': 'Gerente de Projetos e Operações RPA',
     'experience.sondaManager.company': 'SONDA',
     'experience.sondaManager.location': 'Boa Vista - RR',
     'experience.sondaManager.period': 'Jan/2024 - Set/2024',
-    'experience.sondaManager.description': 'Experiência na liderança de equipes de desenvolvimento de software e automação RPA, contribuindo para a organização e o bom andamento dos projetos. Atua com foco na comunicação clara e no alinhamento entre times técnicos e stakeholders, facilitando a colaboração e a tomada de decisões no dia a dia.',
-    'experience.sondaManager.achievements' : 'Principais conquistas:',
+    'experience.sondaManager.description': 'Liderança de equipes de desenvolvimento de software e automação RPA, com foco na comunicação clara e no alinhamento entre times técnicos e stakeholders, facilitando a colaboração e a tomada de decisões.',
     'experience.sondaManager.achievements.1': 'Professor de Introdução à Programação no Tribunal de Justiça de Roraima (TJRR) - 2024.',
-    'experience.sondaManager.achievements.2': '1º lugar no Prêmio de Inovação 2023 – TJRR',
+    'experience.sondaManager.achievements.2': '1º lugar no Prêmio de Inovação 2023 – TJRR.',
+    'experience.sondaManager.achievements.3': 'Coordenação de entregas de projetos de automação RPA com impacto direto na eficiência operacional.',
 
     // Sonda Dev
     'experience.sondaDev.position': 'Desenvolvedor Full Stack',
     'experience.sondaDev.company': 'SONDA',
     'experience.sondaDev.location': 'Boa Vista - RR',
-    'experience.sondaDev.period': 'Mar/2020 - Dez/2024',
-    'experience.sondaDev.description': 'Desenvolvimento de APIs RESTful utilizando Java (com MVC, JSF, JPA, Hibernate), PostgreSQL e Maven, além de Node.js/Express integradas ao Orchestrator UiPath. Também possui experiência com metodologias ágeis, como Scrum e Kanban, e no gerenciamento de tarefas por meio da plataforma Monday.',
-    'experience.sondaDev.achievements.1': 'Projeto de automação com RPA que beneficiou mais de 400 famílias migrantes venezuelanas em Roraima, com reconhecimento internacional e apresentação em Lisboa, em 2023.',
-    
+    'experience.sondaDev.period': 'Mar/2020 - Dez/2023',
+    'experience.sondaDev.description': 'Desenvolvimento de APIs RESTful utilizando Java (MVC, JSF, JPA, Hibernate), PostgreSQL e Maven, além de Node.js/Express integradas ao Orchestrator UiPath. Atuação com metodologias ágeis (Scrum, Kanban) e gerenciamento de tarefas via Monday.',
+    'experience.sondaDev.achievements.1': 'Projeto de automação RPA com impacto social que beneficiou mais de 400 famílias migrantes venezuelanas em Roraima, com reconhecimento internacional e apresentação em Lisboa (2023).',
+    'experience.sondaDev.achievements.2': 'Arquitetura e desenvolvimento de APIs RESTful integradas ao Orchestrator UiPath para automação de processos judiciais.',
+    'experience.sondaDev.achievements.3': 'Aplicação e promoção de metodologias ágeis (Scrum, Kanban) no time.',
+
     // Flutter Curitiba
     'experience.flutterPr.position': 'Desenvolvedor Flutter',
     'experience.flutterPr.company': 'Brain XCode',
     'experience.flutterPr.location': 'Curitiba - PR',
     'experience.flutterPr.period': 'Out/2020 - Abr/2022',
-    'experience.flutterPr.description': 'Desenvolvimento de projetos mobile com Flutter (Dart, Mockito, MobX, Cubit, Bloc), aplicando Clean Architecture e SOLID, em parceria com grupo de desenvolvedores de Roraima atuando em Curitiba/PR.',
-    "experience.flutterPr.achievements.1": "Primeiro projeto remoto colaborativo com equipe de Roraima, utilizando Flutter, Clean Architecture, SOLID e testes automatizados.",
+    'experience.flutterPr.description': 'Desenvolvimento de projetos mobile com Flutter (Dart, Mockito, MobX, Cubit, Bloc), aplicando Clean Architecture e SOLID, em equipe remota colaborativa.',
+    'experience.flutterPr.achievements.1': 'Primeiro projeto remoto colaborativo com equipe distribuída, utilizando Flutter, Clean Architecture, SOLID e testes automatizados.',
+
+    // Education Section
+    'education.title': 'Formação Acadêmica',
+    'education.ifrr.institution': 'IFRR - Instituto Federal de Roraima',
+    'education.ifrr.degree': 'Curso Superior de Tecnologia (CST)',
+    'education.ifrr.field': 'Análise e Desenvolvimento de Sistemas',
+    'education.ifrr.period': '2013 - 2016',
+    'education.ibf.institution': 'IBF Pós - Instituto Brasileiro de Formação',
+    'education.ibf.degree': 'Pós-graduação Lato Sensu',
+    'education.ibf.field': 'Desenvolvimento de Aplicações para Dispositivos Móveis',
+    'education.ibf.period': '2020',
+
+    // Certifications Section
+    'certifications.title': 'Certificações',
+    'certifications.flutter.name': 'MasterClass Flutter',
+    'certifications.qa.name': 'Quality Assurance: plano de testes e gestão de bugs',
+    'certifications.git.name': 'Git e Github: estratégias de ramificação, Conflitos e Pull Requests',
 
     // Contact Section
-    'contact':'Entre em Contato',
-    'contact.h3':'Vamos conversar!',
-    'contact.p':'Estou sempre interessado em novos projetos e oportunidades. Se você tem uma ideia ou precisa de ajuda com desenvolvimento, não hesite em entrar em contato!',
-    "contact.email":"E-mail",
-    "contact.email.ph":"antonino.praxedes@gmail.com",
-    "contact.location":"Localização",
-    "contact.sendMensseger.name":"Nome",
-    "contact.sendMensseger.name.ph":"Seu nome",
-    "contact.sendMensseger.email":"Email",
-    "contact.sendMensseger.email.ph":"seu@email.com",
-    "contact.sendMensseger.subject":"Assunto",
-    "contact.sendMensseger.subject.ph":"Assunto da mensagem",
-    "contact.sendMensseger.mensseger":"Mensagem",
-    "contact.sendMensseger.mensseger.ph":"Sua mensagem",
-    "contact.sendMensseger.btn":"Enviar Mensagem",
-    "contact.toast.title":"Mensagem enviada!",
-    "contact.toast.msg":"Obrigado pelo contato. Responderei em breve!",
+    'contact': 'Entre em Contato',
+    'contact.h3': 'Vamos conversar!',
+    'contact.p': 'Estou sempre interessado em novos projetos e oportunidades. Se você tem uma ideia ou precisa de ajuda com desenvolvimento, não hesite em entrar em contato!',
+    'contact.email': 'E-mail',
+    'contact.email.ph': 'antonino.praxedes@gmail.com',
+    'contact.location': 'Localização',
+    'contact.sendMensseger.name': 'Nome',
+    'contact.sendMensseger.name.ph': 'Seu nome',
+    'contact.sendMensseger.email': 'Email',
+    'contact.sendMensseger.email.ph': 'seu@email.com',
+    'contact.sendMensseger.subject': 'Assunto',
+    'contact.sendMensseger.subject.ph': 'Assunto da mensagem',
+    'contact.sendMensseger.mensseger': 'Mensagem',
+    'contact.sendMensseger.mensseger.ph': 'Sua mensagem',
+    'contact.sendMensseger.btn': 'Enviar Mensagem',
+    'contact.toast.title': 'Mensagem enviada!',
+    'contact.toast.msg': 'Obrigado pelo contato. Responderei em breve!',
 
     // Footer
-    "footer.stack":"Desenvolvedor Full Stack Java",
-    "footer.by": "© 2025 Antonino Junior. Todos os direitos reservados.",
+    'footer.stack': 'Engenheiro de Software Sênior',
+    'footer.by': '© 2026 Antonino Junior. Todos os direitos reservados.',
 
     // Language
     'language.portuguese': 'Português',
@@ -143,14 +181,17 @@ const translations = {
     'nav.highlights': 'Highlights',
     'nav.projects': 'Projects',
     'nav.experience': 'Experience',
+    'nav.education': 'Education',
+    'nav.certifications': 'Certifications',
     'nav.contact': 'Contact',
-    
+
     // Hero Section
-    'hero.about' : "About",
+    'hero.about': 'About',
     'hero.greeting': "Hello, I'm",
     'hero.name': 'Antonino Junior',
-    'hero.title': 'Full Stack Java Developer with experience in JSP, Angular, and ReactJS, using Java EE / Jakarta EE, Spring Boot, and modern software architectures.',
-    'hero.download-cv': 'Download CV',
+    'hero.title': 'Senior Software Engineer | Java & Angular | Node.js & ReactJS | MySQL | PostgreSQL | AWS',
+    'hero.download-cv': 'Download Resume',
+    'hero.cv-url': 'https://drive.google.com/file/d/1F0u6Rb44rwu-xHi_dO1USdzjYn2m3jh_/view?usp=sharing',
     'hero.view-projects': 'View Projects',
 
     'hero.featurecc': 'Clean Code',
@@ -161,94 +202,133 @@ const translations = {
     'hero.featureded.ph': 'Total commitment',
 
     // About
-    'about.text.p1': "I’m a Full Stack Java Developer with over four years of experience in backend development (Java, Spring Boot) and frontend development (Angular, ReactJS). I’ve worked on projects with microservices architecture, Web Services, and RESTful APIs, using relational databases, AWS EC2, and DevOps practices such as Docker and CI/CD. I also have experience in mobile development, including publishing apps on the Google Play Store. I follow software design principles like MVC, DDD, SOLID, and Clean Code.",
+    'about.text.p1': "Software Engineer with over 6 years of experience in Full Stack development, focused on building scalable and high-availability systems. I work with Java (Spring Boot, Jakarta EE, Hibernate), Angular, Node.js/Express, and React/Next.js, with solid experience in PostgreSQL, MySQL, Redis, Python automation, and AWS infrastructure (EC2, Lambda, RDS, Amplify).",
     'about.text.p2': "A GNU/Linux enthusiast and writer in my spare time, I maintained a ",
     'about.text.p3': "since 2015 that reached over 56k views, where I shared technical articles and notes with the community.",
 
     // Skills
-    'skills.title' : "Technical Skills",
-    
+    'skills.title': 'Technical Skills',
+
     // Highlights Section
     'highlights.title': 'Highlights',
+    'highlights.metrics.years': 'Years of Experience',
+    'highlights.metrics.transactions': 'Processed in Transactions',
+    'highlights.metrics.salons': 'Salons Connected',
+    'highlights.metrics.clients': 'Clients Managed',
     'highlights.teaching.title': 'Programming Instructor',
     'highlights.teaching.description': 'Led the creation of automation hubs and trained over 20 public servants at TJRR, promoting the democratization of programming knowledge.',
     'highlights.lisbon.title': 'International Project - Lisbon',
-    'highlights.lisbon.description': 'Participation in an innovative project that was implemented in Lisbon, Portugal, focusing on enterprise solutions.',
+    'highlights.lisbon.description': 'Automation project presented at ExpoJud Portugal, streamlining custody processes for Venezuelan minors, reducing costs and freeing up staff for more complex activities.',
+    'highlights.podcast.title': 'Podcast - Product Launch',
+    'highlights.podcast.description': 'Featured on the Gloss Express Brasil Podcast for the launch of the Salon Map platform, connecting over 15,000 salons and beauty professionals.',
     'highlights.awards.title': 'TJRR Awards',
     'highlights.awards.description': 'Recognition for technical excellence and innovation in projects developed for the Court of Justice of Roraima.',
-    'highlights.view article':'View article',
-    
+    'highlights.view article': 'View article',
+
     // Projects
     'projects.title': 'Featured Projects',
 
     // Experience Section
     'experience.title': 'Professional Experience',
-    'experience.mid.achievements' : 'Main achievements',
+    'experience.achievements': 'Main achievements:',
+
+    // Gloss Express
+    'experience.gloss.position': 'Senior Software Engineer',
+    'experience.gloss.company': 'Gloss Express',
+    'experience.gloss.location': 'Florianópolis - SC',
+    'experience.gloss.period': 'Jul/2025 - Present',
+    'experience.gloss.description': 'Senior Software Engineer in a multidisciplinary team, developing Full Stack scalable solutions for the beauty industry using Node.js, PostgreSQL, and Next.js/React. Active participation in high-availability system architecture and data process automation with Python.',
+    'experience.gloss.achievements.1': 'Salon Map Platform: co-developed the platform connecting over 15,000 salons and professionals nationally and internationally.',
+    'experience.gloss.achievements.2': 'Proprietary Checkout: built a high-conversion checkout system, processing financial volume exceeding R$ 10 million.',
+    'experience.gloss.achievements.3': 'SIG – Gloss Express Integrated System: centralized management ecosystem for 28,000+ clients with CRM, Billing, and RBAC modules.',
+    'experience.gloss.achievements.4': 'ETL process automation and data pipelines with Python (Selenium, Pandas).',
 
     // SCC4
     'experience.mid.position': 'Java/Angular Full Stack Developer',
     'experience.mid.company': 'SCC4',
     'experience.mid.location': 'Florianópolis - SC',
-    'experience.mid.period': 'Feb/2025 - Present',
-    'experience.mid.description': 'Experience in backend development using Java EE, MySQL, and Hibernate, including the creation of Web Services and REST APIs, report generation with JasperReports, and desktop applications with Java Swing. Frontend work with Angular and maintenance of the App Coletas (Portal Postal) in Flutter 3.16+, including Play Store publication, compatibility adjustments, and build generation.',
-    'experience.mid.achievements.1':'Integration of the Post Office Collections API as a new Postal Portal feature (Java/Angular).',
-    'experience.mid.achievements.2': 'Publication of the Coletas app on the Google Play Store, developed in Flutter, along with technical documentation for developers.',
+    'experience.mid.period': 'Feb/2025 - Jul/2025',
+    'experience.mid.description': 'Backend development using Java EE, MySQL, and Hibernate, with Web Services and REST APIs creation for the Portal Postal ecosystem. Frontend work with Angular and maintenance of the Portal Postal Coletas app in Flutter 3.16+, with Play Store publication.',
+    'experience.mid.achievements.1': 'Integration of the Post Office Collections API as a new Portal Postal feature (Java/Angular).',
+    'experience.mid.achievements.2': 'Publication of the Portal Postal Coletas app in Flutter on the Google Play Store, with technical documentation for the dev team.',
+    'experience.mid.achievements.3': 'Management reports with JasperReports and desktop application development in Java Swing.',
 
     // ToolsData
     'experience.java.position': 'Java Backend Developer',
     'experience.java.company': 'ToolsData',
     'experience.java.location': 'Florianópolis - SC',
     'experience.java.period': 'Nov/2024 - Mar/2025',
-    'experience.java.description': 'Experience in developing REST APIs using Java 17+, Jakarta EE, and Hibernate, with integrations involving RabbitMQ, Redis, and OpenAPI. Worked with automated testing using JUnit, code versioning with Git, and application deployment on WildFly/JBoss servers.',
-    'experience.java.achievements.1': 'Integrated multiple APIs by developing endpoints for a credit engine designed to support decision-making in customer credit approval.',
+    'experience.java.description': 'REST API development using Java 17+, Jakarta EE, and Hibernate, with integrations involving RabbitMQ, Redis, and OpenAPI documentation. Automated testing (JUnit) and application deployment on WildFly/JBoss servers.',
+    'experience.java.achievements.1': 'Integrated multiple external APIs, developing endpoints for a credit engine supporting automated decision-making for customer credit approval.',
+    'experience.java.achievements.2': 'Automated testing implementation with JUnit and deployment management on WildFly/JBoss servers.',
 
     // Sonda Manager
-    "experience.sondaManager.position": "RPA Projects and Operations Manager",
-    "experience.sondaManager.company": "SONDA",
-    "experience.sondaManager.location": "Boa Vista - RR",
-    "experience.sondaManager.period": "Jan/2024 - Sep/2024",
-    "experience.sondaManager.description": "Experience leading software development and RPA automation teams, contributing to the organization and smooth execution of projects. Focused on clear communication and alignment between technical teams and stakeholders, supporting collaboration and effective day-to-day decision-making.",
-    "experience.sondaManager.achievements.1": "Instructor of Introduction to Programming at the Court of Justice of Roraima (TJRR) – 2024.",
-    "experience.sondaManager.achievements.2": "1st place in the 2023 Innovation Award – TJRR.",
-    
-    //Sonda Dev
-    "experience.sondaDev.position": "Full Stack Developer",
-    "experience.sondaDev.company": "SONDA",
-    "experience.sondaDev.location": "Boa Vista - RR",
-    "experience.sondaDev.period": "Mar/2020 - Dec/2024",
-    "experience.sondaDev.description": "Developed RESTful APIs using Java (with MVC, JSF, JPA, Hibernate), PostgreSQL, and Maven, as well as Node.js/Express integrated with UiPath Orchestrator. Also experienced in agile methodologies such as Scrum and Kanban, and task management using the Monday platform.",
-    "experience.sondaDev.achievements.1": "RPA automation project that benefited over 400 Venezuelan migrant families in Roraima, gaining international recognition and presented in Lisbon in 2023.",
-    
+    'experience.sondaManager.position': 'RPA Projects and Operations Manager',
+    'experience.sondaManager.company': 'SONDA',
+    'experience.sondaManager.location': 'Boa Vista - RR',
+    'experience.sondaManager.period': 'Jan/2024 - Sep/2024',
+    'experience.sondaManager.description': 'Led software development and RPA automation teams, focused on clear communication and alignment between technical teams and stakeholders, facilitating collaboration and decision-making.',
+    'experience.sondaManager.achievements.1': 'Programming Instructor at the Court of Justice of Roraima (TJRR) – 2024.',
+    'experience.sondaManager.achievements.2': '1st place in the 2023 Innovation Award – TJRR.',
+    'experience.sondaManager.achievements.3': 'Coordinated RPA automation project deliveries with direct impact on operational efficiency.',
+
+    // Sonda Dev
+    'experience.sondaDev.position': 'Full Stack Developer',
+    'experience.sondaDev.company': 'SONDA',
+    'experience.sondaDev.location': 'Boa Vista - RR',
+    'experience.sondaDev.period': 'Mar/2020 - Dec/2023',
+    'experience.sondaDev.description': 'Developed RESTful APIs using Java (MVC, JSF, JPA, Hibernate), PostgreSQL, and Maven, as well as Node.js/Express integrated with UiPath Orchestrator. Experienced in agile methodologies (Scrum, Kanban) and task management using the Monday platform.',
+    'experience.sondaDev.achievements.1': 'RPA automation project with social impact that benefited over 400 Venezuelan migrant families in Roraima, with international recognition and presentation in Lisbon (2023).',
+    'experience.sondaDev.achievements.2': 'Architecture and development of RESTful APIs integrated with UiPath Orchestrator for judicial process automation.',
+    'experience.sondaDev.achievements.3': 'Implementation and promotion of agile methodologies (Scrum, Kanban) within the team.',
+
     // Flutter Curitiba
-    "experience.flutterPr.position": "Flutter Developer",
-    "experience.flutterPr.company": "Brain XCode",
-    "experience.flutterPr.location": "Curitiba - PR",
-    "experience.flutterPr.period": "Oct/2020 - Apr/2022",
-    "experience.flutterPr.description": "Mobile project development using Flutter (Dart, Mockito, MobX, Cubit, Bloc), applying Clean Architecture and SOLID principles, in collaboration with a group of developers from Roraima working in Curitiba/PR.",
-    "experience.flutterPr.achievements.1": "Completed the first collaborative remote project with a Roraima-based team, using Flutter, Clean Architecture, SOLID principles, and automated testing.",
+    'experience.flutterPr.position': 'Flutter Developer',
+    'experience.flutterPr.company': 'Brain XCode',
+    'experience.flutterPr.location': 'Curitiba - PR',
+    'experience.flutterPr.period': 'Oct/2020 - Apr/2022',
+    'experience.flutterPr.description': 'Mobile project development using Flutter (Dart, Mockito, MobX, Cubit, Bloc), applying Clean Architecture and SOLID principles, in a collaborative remote team.',
+    'experience.flutterPr.achievements.1': 'Completed the first collaborative remote project with a distributed team, using Flutter, Clean Architecture, SOLID principles, and automated testing.',
+
+    // Education Section
+    'education.title': 'Education',
+    'education.ifrr.institution': 'IFRR - Federal Institute of Roraima',
+    'education.ifrr.degree': 'Technology Degree (CST)',
+    'education.ifrr.field': 'Systems Analysis and Development',
+    'education.ifrr.period': '2013 - 2016',
+    'education.ibf.institution': 'IBF Pós - Brazilian Institute of Training',
+    'education.ibf.degree': 'Postgraduate Specialization',
+    'education.ibf.field': 'Mobile Application Development',
+    'education.ibf.period': '2020',
+
+    // Certifications Section
+    'certifications.title': 'Certifications',
+    'certifications.flutter.name': 'MasterClass Flutter',
+    'certifications.qa.name': 'Quality Assurance: test planning and bug management',
+    'certifications.git.name': 'Git and Github: branching strategies, Conflicts and Pull Requests',
 
     // Contact Section
-    'contact':'Get in Touch',
-    "contact.h3": "Let's talk!",
-    "contact.p": "I'm always interested in new projects and opportunities. If you have an idea or need help with development, don't hesitate to reach out!",
-    "contact.email": "Email",
-    "contact.email.ph": "antonino.praxedes@gmail.com",
-    "contact.location": "Location",
-    "contact.sendMensseger.name": "Name",
-    "contact.sendMensseger.name.ph": "Your name",
-    "contact.sendMensseger.email": "Email",
-    "contact.sendMensseger.email.ph": "your@email.com",
-    "contact.sendMensseger.subject": "Subject",
-    "contact.sendMensseger.subject.ph": "Message subject",
-    "contact.sendMensseger.mensseger": "Message",
-    "contact.sendMensseger.mensseger.ph": "Your message",
-    "contact.sendMensseger.btn": "Send Message",
-    "contact.toast.title": "Message sent!",
-    "contact.toast.msg": "Thank you for reaching out! I’ll get back to you soon.",
+    'contact': 'Get in Touch',
+    'contact.h3': "Let's talk!",
+    'contact.p': "I'm always interested in new projects and opportunities. If you have an idea or need help with development, don't hesitate to reach out!",
+    'contact.email': 'Email',
+    'contact.email.ph': 'antonino.praxedes@gmail.com',
+    'contact.location': 'Location',
+    'contact.sendMensseger.name': 'Name',
+    'contact.sendMensseger.name.ph': 'Your name',
+    'contact.sendMensseger.email': 'Email',
+    'contact.sendMensseger.email.ph': 'your@email.com',
+    'contact.sendMensseger.subject': 'Subject',
+    'contact.sendMensseger.subject.ph': 'Message subject',
+    'contact.sendMensseger.mensseger': 'Message',
+    'contact.sendMensseger.mensseger.ph': 'Your message',
+    'contact.sendMensseger.btn': 'Send Message',
+    'contact.toast.title': 'Message sent!',
+    'contact.toast.msg': "Thank you for reaching out! I'll get back to you soon.",
 
     // Footer
-    "footer.stack": "Full Stack Java Developer",
-    "footer.by": "© 2025 Antonino Junior. All rights reserved.",
+    'footer.stack': 'Senior Software Engineer',
+    'footer.by': '© 2026 Antonino Junior. All rights reserved.',
 
     // Language
     'language.portuguese': 'Português',

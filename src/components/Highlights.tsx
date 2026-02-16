@@ -1,11 +1,38 @@
 
 import React from 'react';
-import { Award, Users, Globe, ExternalLink } from 'lucide-react';
+import { Award, Users, Globe, ExternalLink, TrendingUp, Store, UsersRound, Clock, Mic } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 const Highlights = () => {
   const { t } = useTheme();
+
+  const metrics = [
+    {
+      value: '6+',
+      label: t('highlights.metrics.years'),
+      color: 'text-blue-600',
+      icon: Clock,
+    },
+    {
+      value: 'R$10M+',
+      label: t('highlights.metrics.transactions'),
+      color: 'text-green-600',
+      icon: TrendingUp,
+    },
+    {
+      value: '15K+',
+      label: t('highlights.metrics.salons'),
+      color: 'text-purple-600',
+      icon: Store,
+    },
+    {
+      value: '28K+',
+      label: t('highlights.metrics.clients'),
+      color: 'text-orange-600',
+      icon: UsersRound,
+    },
+  ];
 
   const highlights = [
     {
@@ -23,6 +50,13 @@ const Highlights = () => {
       link: 'https://www.instagram.com/p/Cs_a7LHsaqn/'
     },
     {
+      icon: Mic,
+      title: t('highlights.podcast.title'),
+      description: t('highlights.podcast.description'),
+      color: 'text-orange-600',
+      link: 'https://www.linkedin.com/in/antoninopraxedes/overlay/1768709827834/single-media-viewer/?profileId=ACoAABtzYkkBLm13FZFaMVdu_4Po91_wEJaFd5Q'
+    },
+    {
       icon: Award,
       title: t('highlights.awards.title'),
       description: t('highlights.awards.description'),
@@ -37,8 +71,27 @@ const Highlights = () => {
         <h2 className="text-4xl font-bold text-center text-slate-800 mb-12">
           {t('highlights.title')}
         </h2>
-        
-        <div className="grid md:grid-cols-3 gap-8">
+
+        {/* Impact Metrics */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-14">
+          {metrics.map((metric, index) => {
+            const IconComponent = metric.icon;
+            return (
+              <div key={index} className="text-center p-6 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div className="mx-auto mb-3 w-10 h-10 flex items-center justify-center">
+                  <IconComponent size={28} className={metric.color} />
+                </div>
+                <div className={`text-3xl md:text-4xl font-bold ${metric.color} mb-1`}>
+                  {metric.value}
+                </div>
+                <p className="text-slate-600 text-xs md:text-sm">{metric.label}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Highlight Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {highlights.map((highlight, index) => {
             const IconComponent = highlight.icon;
             return (
