@@ -1,83 +1,90 @@
-import { Github, Linkedin, Mail, Download } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import React from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
+import profileImg from '@/assets/profile_about.jpg';
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const { t } = useTheme();
 
-  const handleDownloadCV = () => {
-    window.open(t('hero.cv-url'), '_blank');
-  };
-
-  const handleViewProjects = () => {
-    const projectsSection = document.getElementById('projetos');
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section id="inicio" className="pt-24 pb-16 px-6">
-      <div className="container mx-auto max-w-4xl text-center">
-        <div className="animate-fade-in">
-          <img
-            src="https://avatars.githubusercontent.com/u/19830645?v=4"
-            alt="Desenvolvedor Java Full Stack"
-            className="w-32 h-32 rounded-full mx-auto mb-8 object-cover shadow-lg"
-          />
-          
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-800 mb-4">
-            {t('hero.greeting')}
-            <span className="block text-blue-600 mt-2">{t('hero.name')}</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-2xl mx-auto">
-            {t('hero.title')}
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <button 
-              onClick={handleDownloadCV}
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2"
+    <section id="top" className="pt-24 md:pt-32 pb-24 md:pb-32">
+      <div className="max-w-[1100px] mx-auto px-6 md:px-10">
+        <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 md:gap-20 items-start">
+          {/* LEFT — editorial */}
+          <div>
+            <div data-reveal className="reveal">
+              <div className="text-[11px] tracking-[0.2em] uppercase text-neutral-500 mb-8">
+                {t('hero.kicker')}
+              </div>
+            </div>
+
+            <h1
+              data-reveal
+              className="reveal font-serif-editorial leading-[0.95] tracking-[-0.025em] mb-8 text-[56px] md:text-[88px] text-neutral-900"
+              style={{ fontWeight: 400 }}
             >
-              <Download size={20} />
-              {t('hero.download-cv')}
-            </button>
-            {/* <button 
-              onClick={handleViewProjects}
-              className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all duration-200"
-            >
-              {t('hero.view-projects')}
-            </button> */}
+              {t('hero.name')}
+            </h1>
+
+            <div data-reveal className="reveal">
+              <div className="h-px w-16 bg-neutral-900 mb-7" />
+              <p
+                className="font-serif-editorial text-[22px] md:text-[26px] leading-[1.35] text-neutral-800 mb-3"
+                style={{ fontWeight: 400 }}
+              >
+                {t('hero.title')}
+              </p>
+              <p className="text-[14px] text-neutral-500 tracking-wide mb-10">
+                {t('hero.subtitle')}
+              </p>
+              <p className="text-[13px] text-neutral-500 mb-10 flex items-center gap-2">
+                <span className="inline-block w-1 h-1 rounded-full bg-neutral-400" />
+                {t('hero.location')}
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={t('hero.cv-url')}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-3 px-5 py-3 text-[13px] border border-neutral-900 bg-neutral-900 text-white hover:bg-white hover:text-neutral-900 transition-colors"
+                >
+                  {t('hero.download-cv')}
+                  <span>→</span>
+                </a>
+                <a
+                  href="#projects"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById('projects');
+                    if (!el) return;
+                    const y =
+                      el.getBoundingClientRect().top + window.scrollY - 48;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }}
+                  className="inline-flex items-center gap-3 px-5 py-3 text-[13px] border border-neutral-300 text-neutral-900 hover:border-neutral-900 transition-colors"
+                >
+                  {t('hero.view-projects')}
+                </a>
+              </div>
+            </div>
           </div>
-          
-          <div className="flex justify-center space-x-6">
-            <a
-              href="https://github.com/antonino3g"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-600 hover:text-blue-600 transition-colors duration-200"
-            >
-              <Github size={24} />
-            </a>
 
-            <a
-              href="https://www.linkedin.com/in/antoninopraxedes/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-600 hover:text-blue-600 transition-colors duration-200"
-            >
-              <Linkedin size={24} />
-            </a>
-
-            <a
-              href="mailto:antonino.praxedes@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-600 hover:text-blue-600 transition-colors duration-200"
-            >
-              <Mail size={24} />
-            </a>
-
+          {/* RIGHT — portrait */}
+          <div data-reveal className="reveal md:pt-6">
+            <figure className="relative">
+              <div className="relative aspect-[4/5] overflow-hidden bg-neutral-100">
+                <img
+                  src={profileImg}
+                  alt="Antonino Junior"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ objectPosition: '28% 75%' }}
+                />
+              </div>
+              <figcaption className="mt-3 flex items-center justify-between text-[11px] text-neutral-400">
+                <span>Antonino Junior</span>
+                <span>Plate I</span>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>

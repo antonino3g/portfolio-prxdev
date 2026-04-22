@@ -1,80 +1,91 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
-import ThemeSwitch from './ThemeSwitch';
-import { Link as ScrollLink } from 'react-scroll';
+import React, { useEffect, useState } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { t } = useTheme();
+const NAV_LINKS = [
+  { k: 'nav.about', href: 'about' },
+  { k: 'nav.skills', href: 'skills' },
+  { k: 'nav.highlights', href: 'highlights' },
+  { k: 'nav.projects', href: 'projects' },
+  { k: 'nav.experience', href: 'experience' },
+  { k: 'nav.courses', href: 'courses' },
+  { k: 'nav.contact', href: 'contact' },
+];
 
-  const navItems = [
-    { href: 'inicio', label: t('nav.home') },
-    { href: 'sobre', label: t('nav.about') },
-    { href: 'habilidades', label: t('nav.skills') },
-    { href: 'destaques', label: t('nav.highlights') },
-    { href: 'experiencia', label: t('nav.experience') },
-    { href: 'formacao', label: t('nav.education') },
-    { href: 'certificacoes', label: t('nav.certifications') },
-    { href: 'contato', label: t('nav.contact') }
-  ];
+const Header: React.FC = () => {
+  const { t, language, toggleLanguage } = useTheme();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const handleNav = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
+    e.preventDefault();
+    const el = document.getElementById(targetId);
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.scrollY - 48;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    window.setTimeout(() => {
+      el.classList.remove('section-bloom');
+      void el.offsetWidth;
+      el.classList.add('section-bloom');
+    }, 420);
+  };
+
+  const handleHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 shadow-sm">
-      <nav className="container mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
-          <div className="text-2xl font-bold text-slate-800">
-            <span className="text-blue-600">Antonino</span>Dev
-          </div>
+    <header
+      className={`topbar-glass fixed top-0 inset-x-0 z-40 border-b transition-colors ${
+        scrolled ? 'border-neutral-200' : 'border-transparent'
+      }`}
+    >
+      <div className="max-w-[1100px] mx-auto px-6 md:px-10 h-[60px] flex items-center justify-between">
+        <a
+          href="#top"
+          onClick={handleHome}
+          className="font-serif-editorial text-[17px] tracking-tight text-neutral-900"
+          style={{ fontWeight: 500 }}
+        >
+          Antonino Junior<span className="text-neutral-400">.</span>
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <ScrollLink
-                key={item.href}
-                to={item.href}
-                smooth={true}
-                duration={50}
-                offset={-80}
-                className="cursor-pointer text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium"
-              >
-                {item.label}
-              </ScrollLink>
-            ))}
-            <ThemeSwitch />
-          </div>
+        <nav className="hidden md:flex items-center gap-7">
+          {NAV_LINKS.map((l) => (
+            <a
+              key={l.k}
+              href={`#${l.href}`}
+              onClick={(e) => handleNav(e, l.href)}
+              className="text-[12.5px] text-neutral-600 hover:text-neutral-900 transition-colors tracking-wide"
+            >
+              {t(l.k)}
+            </a>
+          ))}
+        </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-slate-800"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4">
-            {navItems.map((item) => (
-              <ScrollLink
-                key={item.href}
-                to={item.href}
-                smooth={true}
-                duration={500}
-                offset={-80}
-                className="block py-2 text-slate-600 hover:text-blue-600 transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </ScrollLink>
-            ))}
-            <div className="mt-4 pt-4 border-t border-slate-200">
-              <ThemeSwitch />
-            </div>
-          </div>
-        )}
-      </nav>
+        <button
+          onClick={toggleLanguage}
+          className="inline-flex items-center gap-2 text-[11px] font-mono-editorial tracking-[0.1em] uppercase text-neutral-500 hover:text-neutral-900 transition-colors px-3 py-1.5 border border-neutral-200 hover:border-neutral-900"
+          aria-label="Toggle language"
+        >
+          <span className={language === 'pt-br' ? 'text-neutral-900' : ''}>
+            PT
+          </span>
+          <span className="text-neutral-300">/</span>
+          <span className={language === 'en-us' ? 'text-neutral-900' : ''}>
+            EN
+          </span>
+        </button>
+      </div>
     </header>
   );
 };

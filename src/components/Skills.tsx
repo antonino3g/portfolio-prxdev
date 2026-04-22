@@ -1,76 +1,64 @@
-import { useTheme } from "@/contexts/ThemeContext";
+import React from 'react';
+import Section from './Section';
+import { useTheme } from '@/contexts/ThemeContext';
 
-const Skills = () => {
+interface SkillGroup {
+  labelKey: string;
+  items: string[];
+}
+
+const SKILLS_GROUPS: SkillGroup[] = [
+  {
+    labelKey: 'skills.backend',
+    items: ['Java', 'Spring Boot', 'Jakarta EE', 'Hibernate', 'Node.js', 'Express', 'Python'],
+  },
+  {
+    labelKey: 'skills.frontend',
+    items: ['React', 'Next.js', 'Angular', 'TypeScript', 'Tailwind CSS', 'Flutter'],
+  },
+  {
+    labelKey: 'skills.data',
+    items: ['PostgreSQL', 'MySQL', 'Redis', 'RabbitMQ'],
+  },
+  {
+    labelKey: 'skills.infra',
+    items: ['AWS (EC2, Lambda, RDS, Amplify)', 'Linux', 'Docker', 'GitHub Actions', 'WildFly/JBoss'],
+  },
+  {
+    labelKey: 'skills.practices',
+    items: ['Clean Architecture', 'SOLID', 'DDD', 'TDD / JUnit', 'Scrum', 'Kanban'],
+  },
+];
+
+const Skills: React.FC = () => {
   const { t } = useTheme();
-  const skillCategories = [
-    {
-      title: 'Backend',
-      skills: [
-        { name: 'Java', level: 95 },
-        { name: 'Spring Boot', level: 90 },
-        { name: 'JPA/Hibernate', level: 94 },
-        { name: 'Node.js/Express', level: 89 },
-        { name: 'Python', level: 85 },
-      ]
-    },
-    {
-      title: 'Frontend',
-      skills: [
-        { name: 'Angular', level: 91 },
-        { name: 'React/Next.js', level: 89 },
-        { name: 'TypeScript', level: 85 },
-        { name: 'Angular Material', level: 90 },
-        { name: 'HTML/CSS', level: 95 }
-      ]
-    },
-    {
-      title: 'Database & DevOps',
-      skills: [
-        { name: 'PostgreSQL', level: 93 },
-        { name: 'MySQL', level: 89 },
-        { name: 'Redis', level: 88 },
-        { name: 'AWS (EC2, Lambda, RDS)', level: 91 },
-        { name: 'Docker/Nginx', level: 88 },
-        { name: 'Git', level: 97 }
-      ]
-    },
-  ];
-
   return (
-    <section id="habilidades" className="py-16 px-6 bg-slate-50">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-4xl font-bold text-center text-slate-800 mb-12">
-          {t('skills.title')}
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold text-slate-800 mb-6 text-center">
-                {category.title}
-              </h3>
-
-              <div className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-slate-700 font-medium">{skill.name}</span>
-                      <span className="text-blue-600 font-medium">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-slate-200 rounded-full h-2">
-                      <div
-                        className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+    <Section id="skills" num="02" title={t('skills.title')}>
+      <div className="divide-y divide-neutral-200">
+        {SKILLS_GROUPS.map((g, i) => (
+          <div
+            key={i}
+            data-reveal
+            className="reveal grid md:grid-cols-[180px_1fr] gap-4 md:gap-10 py-6"
+          >
+            <div className="text-[13px] uppercase tracking-[0.15em] text-neutral-500 pt-[3px]">
+              {t(g.labelKey)}
             </div>
-          ))}
-        </div>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              {g.items.map((s, j) => (
+                <span
+                  key={j}
+                  className="font-serif-editorial text-[18px] text-neutral-900"
+                  style={{ fontWeight: 400 }}
+                >
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 };
 
