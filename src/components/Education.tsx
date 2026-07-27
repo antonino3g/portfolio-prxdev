@@ -1,51 +1,92 @@
-import { GraduationCap } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import type { JSX } from 'react';
+import { asset } from '../lib/asset';
+import { useI18n } from '../i18n';
 
-const Education = () => {
-  const { t } = useTheme();
+/** Cursos são fixos, iguais nos 3 idiomas (protótipo, linhas 1091–1098). */
+const COURSES = [
+  { title: 'Building with the Claude API', by: 'Anthropic' },
+  { title: 'Claude Code', by: 'Anthropic' },
+  { title: 'AI Fluency: Framework & Foundations', by: 'Anthropic' },
+  { title: 'Java Full Stack Developer', by: 'Sonda' },
+  { title: 'Flutter MasterClass', by: 'Flutterando' },
+  { title: 'Quality Assurance: Test Plan e Bug Management', by: 'Alura' },
+  { title: 'Git e GitHub: Branching, Conflitos e Pull Requests', by: 'Alura' },
+  { title: 'Linux Unhatched', by: 'Cisco Networking Academy' },
+] as const;
 
-  const educationItems = [
-    {
-      institution: t('education.ibf.institution'),
-      degree: t('education.ibf.degree'),
-      field: t('education.ibf.field'),
-      period: t('education.ibf.period'),
-    },
-    {
-      institution: t('education.ifrr.institution'),
-      degree: t('education.ifrr.degree'),
-      field: t('education.ifrr.field'),
-      period: t('education.ifrr.period'),
-    },
-  ];
+export function Education(): JSX.Element {
+  const { t } = useI18n();
 
   return (
-    <section id="formacao" className="py-16 px-6 bg-white">
-      <div className="container mx-auto max-w-4xl">
-        <h2 className="text-4xl font-bold text-center text-slate-800 mb-12">
-          {t('education.title')}
-        </h2>
+    <section className="sec" id="formacao">
+      <div className="wrap">
+        <div className="sec-head">
+          <span className="sec-num">04</span>
+          <h2>{t('sec.formacao')}</h2>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {educationItems.map((edu, index) => (
-            <div key={index} className="bg-slate-50 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-4">
-                <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                  <GraduationCap className="text-blue-600" size={24} />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-slate-800 mb-1">{edu.institution}</h3>
-                  <p className="text-blue-600 font-semibold mb-1">{edu.degree}</p>
-                  <p className="text-slate-600 text-sm mb-2">{edu.field}</p>
-                  <p className="text-slate-500 text-sm">{edu.period}</p>
-                </div>
+        <div className="three">
+          <div>
+            <p className="mini-head">{t('form.academica')}</p>
+            <div className="lines">
+              <div className="line">
+                <span className="t">{t('form.pos')}</span>
+                <span className="by">Instituto Brasileiro de Formação — IBF</span>
+              </div>
+              <div className="line">
+                <span className="t">{t('form.grad')}</span>
+                <span className="by">Instituto Federal de Roraima — IFRR</span>
               </div>
             </div>
-          ))}
+          </div>
+
+          <div>
+            <p className="mini-head">{t('form.certificacoes')}</p>
+            <div className="lines">
+              <a
+                className="line cert"
+                href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=0A145D9EBD79DFCB643A36DF9132BE6D2A51D09F70A91E1B5716A6C89CEB2CBE"
+                target="_blank"
+                rel="noopener"
+              >
+                <img className="cert-badge" src={asset('assets/oracle-oci-architect-associate.png')} alt={t('cert.arch.alt')} />
+                <span>
+                  <span className="t">Oracle Cloud Infrastructure Certified Architect Associate</span>
+                  <span className="by">
+                    Oracle Certified <span aria-hidden="true">↗</span>
+                  </span>
+                </span>
+              </a>
+              <a
+                className="line cert"
+                href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=D1A9D0E6D1BEC5ED670BCB4EEC9981D922657D1843343D7D750B4384E12310B5"
+                target="_blank"
+                rel="noopener"
+              >
+                <img className="cert-badge" src={asset('assets/oracle-oci-foundations-associate.png')} alt={t('cert.found.alt')} />
+                <span>
+                  <span className="t">Oracle Cloud Infrastructure Certified Foundations Associate</span>
+                  <span className="by">
+                    Oracle Certified <span aria-hidden="true">↗</span>
+                  </span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <p className="mini-head">{t('form.cursos')}</p>
+            <div className="lines">
+              {COURSES.map((course) => (
+                <div className="line" key={course.title}>
+                  <span className="t">{course.title}</span>
+                  <span className="by">{course.by}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Education;
+}

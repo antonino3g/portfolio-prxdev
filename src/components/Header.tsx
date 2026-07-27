@@ -1,82 +1,96 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
-import ThemeSwitch from './ThemeSwitch';
-import { Link as ScrollLink } from 'react-scroll';
+import { useEffect, useState, type JSX } from 'react';
+import { useI18n } from '../i18n';
+import { LangSwitcher } from './LangSwitcher';
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { t } = useTheme();
+const SECTION_IDS = ['stack', 'projetos', 'experiencias', 'formacao'] as const;
 
-  const navItems = [
-    { href: 'inicio', label: t('nav.home') },
-    { href: 'sobre', label: t('nav.about') },
-    { href: 'habilidades', label: t('nav.skills') },
-    { href: 'destaques', label: t('nav.highlights') },
-    { href: 'experiencia', label: t('nav.experience') },
-    { href: 'formacao', label: t('nav.education') },
-    { href: 'certificacoes', label: t('nav.certifications') },
-    { href: 'contato', label: t('nav.contact') }
-  ];
+export function Header(): JSX.Element {
+  const { t } = useI18n();
+  const [current, setCurrent] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) {
+      return;
+    }
+
+    const visible: Record<string, boolean> = {};
+
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          visible[entry.target.id] = entry.isIntersecting;
+        });
+        let next: string | null = null;
+        SECTION_IDS.forEach((id) => {
+          if (visible[id] && !next) {
+            next = id;
+          }
+        });
+        setCurrent(next);
+      },
+      { rootMargin: '-72px 0px -58% 0px', threshold: 0 },
+    );
+
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        spy.observe(el);
+      }
+    });
+
+    return () => {
+      spy.disconnect();
+    };
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 shadow-sm">
-      <nav className="container mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
-          <div className="text-2xl font-bold text-slate-800">
-            <span className="text-blue-600">Antonino</span>Dev
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <ScrollLink
-                key={item.href}
-                to={item.href}
-                smooth={true}
-                duration={50}
-                offset={-80}
-                className="cursor-pointer text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium"
+    <header className="top">
+      <div className="wrap top-in">
+        <a className="mark" href="#topo">
+          Antonino Junior
+        </a>
+        <LangSwitcher />
+        <nav aria-label="Seções">
+          <ul>
+            <li>
+              <a
+                className="navlink"
+                href="#stack"
+                aria-current={current === 'stack' ? 'true' : undefined}
               >
-                {item.label}
-              </ScrollLink>
-            ))}
-            <ThemeSwitch />
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-slate-800"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4">
-            {navItems.map((item) => (
-              <ScrollLink
-                key={item.href}
-                to={item.href}
-                smooth={true}
-                duration={500}
-                offset={-80}
-                className="block py-2 text-slate-600 hover:text-blue-600 transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
+                {t('nav.stack')}
+              </a>
+            </li>
+            <li>
+              <a
+                className="navlink"
+                href="#projetos"
+                aria-current={current === 'projetos' ? 'true' : undefined}
               >
-                {item.label}
-              </ScrollLink>
-            ))}
-            <div className="mt-4 pt-4 border-t border-slate-200">
-              <ThemeSwitch />
-            </div>
-          </div>
-        )}
-      </nav>
+                {t('nav.projetos')}
+              </a>
+            </li>
+            <li>
+              <a
+                className="navlink"
+                href="#experiencias"
+                aria-current={current === 'experiencias' ? 'true' : undefined}
+              >
+                {t('nav.experiencias')}
+              </a>
+            </li>
+            <li>
+              <a
+                className="navlink"
+                href="#formacao"
+                aria-current={current === 'formacao' ? 'true' : undefined}
+              >
+                {t('nav.formacao')}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
   );
-};
-
-export default Header;
+}
