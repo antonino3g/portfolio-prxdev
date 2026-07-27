@@ -4,12 +4,21 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Enfileira deploys em vez de cancelar um em andamento: publicação de página
+# não deve ser interrompida no meio.
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,17 +28,40 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build project
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload artifact do Pages
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
+          path: ./dist
+
+  # IMPORTANTE: para este workflow publicar o site, é preciso mudar em
+  # Settings → Pages a opção "Source" de "Deploy from a branch" para
+  # "GitHub Actions". Enquanto isso não for feito, o Pages continua servindo
+  # o conteúdo antigo (main → /docs) e este job roda sem efeito visível.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # A base do Vite (`/portfolio-prxdev/`, definida em vite.config.ts)
+      # precisa ser exatamente o nome deste repositório, senão os assets
+      # publicados quebram no ar.
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
